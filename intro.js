@@ -67,7 +67,7 @@ export function update(deltaTime) {
   if (startPhase < 6) {
     stepTimer += deltaTime;
     if (stepTimer >= stepInterval) {
-      playAudioRandom("intro_step", 6, introStepVolume);
+      playAudioRandom("intro_step", 4, introStepVolume);
       stepTimer %= stepInterval;
     }
     for (let i = 0; i < gridSize[1]; i++) {

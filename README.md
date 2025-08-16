@@ -34,11 +34,21 @@ See the "**Stuck?**" section above if you can't figure something out!
 
 ## Acknowledgements
 Assets used:
-- [2D Pixel Art Character Template Asset Pack](https://zegley.itch.io/2d-platformermetroidvania-asset-pack) by ZeggyGames
-- [Doki Card Game Sprites](https://kraily4t8.itch.io/doki-jam-assets) by @kraily4t8
-- [Sunset Gradient](https://freesvg.org/zeimusu-sunset-gradient) by OpenClipart via FreeSVG
-
-External code used:
-- [Line intersection detection](https://stackoverflow.com/a/24392281) by Dan Fox via StackOverflow
+- Graphics:
+  - [2D Pixel Art Character Template Asset Pack](https://zegley.itch.io/2d-platformermetroidvania-asset-pack) by ZeggyGames
+  - [Doki Card Game Sprites](https://kraily4t8.itch.io/doki-jam-assets) by @kraily4t8
+  - [Sunset Gradient](https://freesvg.org/zeimusu-sunset-gradient) by OpenClipart via FreeSVG
+- Sound Effects:
+  - [Small Explosion Audio Pack](https://epesami.itch.io/small-explosion-audio-pack) by EpeSami
+  - [Collision Audio pack](https://epesami.itch.io/collision-audio-pack) by EpeSami
+  - [Universal UI/Menu Soundpack](https://cyrex-studios.itch.io/universal-ui-soundpack) by [Nathan Gibson](https://nathangibson.myportfolio.com)
+  - [Pixel Combat SFX](https://cyrex-studios.itch.io/universal-ui-soundpack) by Helton Yan
+  - [orecart_move_1](https://pixabay.com/sound-effects/orecart-move-1-100470/) by Amusquiz99 via Pixabay
+  - [Chest Opening](https://pixabay.com/sound-effects/chest-opening-87569/) by spookymodem via Pixabay
+  - [Door open](https://pixabay.com/sound-effects/door-open-86191/) by musiworld via Pixabay
+  - [Hitting Tall Grass](https://pixabay.com/sound-effects/hitting-tall-grass-32282/) by worthahep88 via Pixabay
+  - [concrete footsteps 1](https://pixabay.com/sound-effects/concrete-footsteps-1-6265/) by patchytherat via Pixabay
+- Code:
+  - [Line intersection detection](https://stackoverflow.com/a/24392281) by Dan Fox via StackOverflow
 
 Thanks to kano for hosting the jam and its community!

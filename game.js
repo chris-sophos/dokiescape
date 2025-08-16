@@ -198,7 +198,7 @@ function playerMotion(deltaTime) {
     // step sounds
     stepTimer += deltaTime;
     if (stepTimer >= stepInterval) {
-      playAudioRandom("step", 6, stepVolume);
+      playAudioRandom("step", 4, stepVolume);
       stepTimer %= stepInterval;
     }
 
@@ -297,12 +297,12 @@ function handleClick(evt) {
       if (cursorValid && interactable(tile, canContinue)) {
         switch (tile) {
           case 5:
-            playAudioRandom("trapdoor", 4, trapdoorVolume);
+            playAudio("trapdoor", trapdoorVolume);
             nextLevel();
             break;
           case 6:
             playAudio("chest", chestVolume);
-            playAudio("pickup", pickupVolume);
+            playAudioRandom("pickup", 2, pickupVolume);
             const chest = chests[`${cursorCell[0]},${cursorCell[1]}`];
             if (inventory) {
               for (let i = 0; i < chest.length; i++) {
@@ -328,7 +328,7 @@ function handleClick(evt) {
         if (!grid[cursorCell[1]][cursorCell[0]]) {
           const currBomb = bombGrid[cursorCell[1]][cursorCell[0]];
           if (currBomb && currBomb !== selected + 15 && inventory) {
-            playAudio("pickup", pickupVolume);
+            playAudioRandom("pickup", 2, pickupVolume);
             inventory[currBomb - 16] ??= 0
             inventory[currBomb - 16]++
             bombGrid[cursorCell[1]][cursorCell[0]] = 0;
@@ -352,7 +352,7 @@ function handleClick(evt) {
       if (cursorValid) {
         const bomb = bombGrid[cursorCell[1]][cursorCell[0]];
         if (bomb && inventory) {
-          playAudio("pickup", pickupVolume);
+          playAudioRandom("pickup", 2, pickupVolume);
           inventory[bomb - 16] ??= 0
           inventory[bomb - 16]++
           bombGrid[cursorCell[1]][cursorCell[0]] = 0;
@@ -373,7 +373,7 @@ const pebbleSize = 50;
 const pebbleSpeed = 14;
 
 function shootPebble() {
-  playAudio("pebble", shootVolume);
+  playAudioRandom("pebble", 6, shootVolume);
   shotsFired++;
   const pos = [playerPos[0] + playerSize[0] / 2, playerPos[1] + playerSize[1] / 2];
   const dir = [cursorPos[0] - pos[0], cursorPos[1] - pos[1]]

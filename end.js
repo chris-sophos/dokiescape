@@ -45,7 +45,7 @@ export function end() {
 function endScreen() {
   endOverlay.classList.remove("disabled");
   setTimeout(() => {
-    playAudio("ding", dingVolume);
+    playAudio("ding1", dingVolume);
     title.classList.remove("disabled");
     setTimeout(revealLine, 800)
   }, 500)
@@ -61,7 +61,7 @@ function revealLine() {
     }, 800);
     return;
   }
-  playAudio("ding");
+  playAudio("ding2");
   lines[currentLine].classList.remove("disabled");
   setTimeout(revealLine, 300);
 }
