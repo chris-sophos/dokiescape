@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>DokiEscape!</title>
+    <!-- playing audio requests favicon on chrome -->
+    <link rel="icon" href="data:,">
+    <link rel="stylesheet" href="styles.css">
+    <!-- #region preload -->
+    <!-- #region player -->
+    <link rel="preload" as="image" href="assets/player/front.png">
+    <link rel="preload" as="image" href="assets/player/back.png">
+    <link rel="preload" as="image" href="assets/player/right.png">
+    <link rel="preload" as="image" href="assets/player/left.png">
+    <!-- #endregion -->
+    <!-- #region tiles -->
+    <link rel="preload" as="image" href="assets/tiles/empty.png">
+    <link rel="preload" as="image" href="assets/tiles/stone.png">
+    <link rel="preload" as="image" href="assets/tiles/weakstone.png">
+    <link rel="preload" as="image" href="assets/tiles/deepstone.png">
+    <link rel="preload" as="image" href="assets/tiles/weakdeepstone.png">
+    <link rel="preload" as="image" href="assets/tiles/trapdoor.png">
+    <link rel="preload" as="image" href="assets/tiles/chest.png">
+    <link rel="preload" as="image" href="assets/tiles/chest_disabled.png">
+    <link rel="preload" as="image" href="assets/tiles/dirt.png">
+    <link rel="preload" as="image" href="assets/tiles/grass.png">
+    <link rel="preload" as="image" href="assets/tiles/rail-h.png">
+    <link rel="preload" as="image" href="assets/tiles/rail-v.png">
+    <link rel="preload" as="image" href="assets/tiles/rail_corner-lu.png">
+    <link rel="preload" as="image" href="assets/tiles/rail_corner-ru.png">
+    <link rel="preload" as="image" href="assets/tiles/rail_corner-ld.png">
+    <link rel="preload" as="image" href="assets/tiles/rail_corner-rd.png">
+    <link rel="preload" as="image" href="assets/tiles/bomb_small.png">
+    <link rel="preload" as="image" href="assets/tiles/bomb_medium.png">
+    <link rel="preload" as="image" href="assets/tiles/bomb_large.png">
+    <link rel="preload" as="image" href="assets/tiles/slingshot.png">
+    <link rel="preload" as="image" href="assets/tiles/pebble.png">
+    <link rel="preload" as="image" href="assets/tiles/dad.png">
+    <!-- #endregion -->
+    <!-- #region intro -->
+    <link rel="preload" as="image" href="assets/intro/run1.png">
+    <link rel="preload" as="image" href="assets/intro/run2.png">
+    <link rel="preload" as="image" href="assets/intro/run3.png">
+    <link rel="preload" as="image" href="assets/intro/run4.png">
+    <link rel="preload" as="image" href="assets/intro/run5.png">
+    <link rel="preload" as="image" href="assets/intro/run6.png">
+    <link rel="preload" as="image" href="assets/intro/run7.png">
+    <link rel="preload" as="image" href="assets/intro/run8.png">
+    <link rel="preload" as="image" href="assets/intro/fall.png">
+    <link rel="preload" as="image" href="assets/intro/dad.png">
+    <link rel="preload" as="image" href="assets/intro/sun.png">
+    <!-- #endregion -->
+    <!-- #region explosion -->
+    <link rel="preload" as="image" href="assets/explosion/0.png">
+    <link rel="preload" as="image" href="assets/explosion/1.png">
+    <link rel="preload" as="image" href="assets/explosion/2.png">
+    <link rel="preload" as="image" href="assets/explosion/3.png">
+    <link rel="preload" as="image" href="assets/explosion/4.png">
+    <link rel="preload" as="image" href="assets/explosion/5.png">
+    <link rel="preload" as="image" href="assets/explosion/6.png">
+    <link rel="preload" as="image" href="assets/explosion/7.png">
+    <link rel="preload" as="image" href="assets/explosion/8.png">
+    <link rel="preload" as="image" href="assets/explosion/9.png">
+    <link rel="preload" as="image" href="assets/explosion/10.png">
+    <link rel="preload" as="image" href="assets/explosion/11.png">
+    <link rel="preload" as="image" href="assets/explosion/12.png">
+    <link rel="preload" as="image" href="assets/explosion/13.png">
+    <link rel="preload" as="image" href="assets/explosion/14.png">
+    <link rel="preload" as="image" href="assets/explosion/15.png">
+    <!-- #endregion -->
+    <!-- #region end -->
+    <link rel="preload" as="image" href="assets/end/doki.png">
+    <link rel="preload" as="image" href="assets/end/dad.png">
+    <!-- #endregion -->
+    <!-- #endregion -->
+  </head>
+  <body>
+    <main id="root">
+      <h1>DokiEscape!</h1>
+      <div id="intro" class="disabled">
+        <svg id="intro-grid">
+          <rect width="100%" height="50%" fill="deepskyblue" />
+          <rect width="100%" height="50%" y="50%" fill="slategray" />
+          <image
+            href="assets/intro/sun.png"
+            x="400" y="25" width="50" height="50"
+          />
+          <image
+            id="intro-player"
+            width="70" height="70"
+            x="220" y="90"
+            fill="yellow"
+          >
+            <animate
+              attributeName="href"
+              dur="0.6s"
+              repeatCount="indefinite"
+              values="
+                assets/intro/run1.png;
+                assets/intro/run2.png;
+                assets/intro/run3.png;
+                assets/intro/run4.png;
+                assets/intro/run5.png;
+                assets/intro/run6.png;
+                assets/intro/run7.png;
+                assets/intro/run8.png;
+              "
+            />
+          </image>
+        </svg>
+        <button id="start">Start</button>
+      </div>
+      <svg id="game" class="disabled" fill="transparent">
+        <rect width="100%" height="100%" fill="dimgray" />
+        <g id="rail" />
+        <g id="terrain" />
+        <g id="bomb" />
+        <g id="preview" fill="white" />
+        <g id="explosion" />
+        <image
+          id="player"
+          width="40" height="40"
+        />
+        <image
+          id="minecart" href="assets/tiles/dad.png"
+          width="50" height="50"
+        />
+        <rect id="highlight" />
+        <defs>
+          <image id="pebble" href="assets/tiles/pebble.png" width="50" height="50" />
+          <image id="explosion-effect" width="50" height="50">
+            <animate
+              attributeName="href"
+              dur="0.4s"
+              repeatCount="indefinite"
+              values="
+                assets/tiles/empty.png;
+                assets/explosion/0.png;
+                assets/explosion/1.png;
+                assets/explosion/2.png;
+                assets/explosion/3.png;
+                assets/explosion/4.png;
+                assets/explosion/5.png;
+                assets/explosion/6.png;
+                assets/explosion/7.png;
+                assets/explosion/8.png;
+                assets/explosion/9.png;
+                assets/explosion/10.png;
+                assets/explosion/11.png;
+                assets/explosion/12.png;
+                assets/explosion/13.png;
+                assets/explosion/14.png;
+                assets/explosion/15.png;
+              "
+            />
+          </image>
+        </defs>
+      </svg>
+      <svg id="inventory" class="disabled" width="290" height="70">
+        <g>
+          <rect
+            class="invslot"
+            x="15" y="10" width="50" height="50"
+            fill="#505080" stroke-width="5"
+          />
+          <image
+            href="assets/tiles/slingshot.png"
+            x="15" y="10" width="50" height="50"
+          />
+        </g>
+        <g class="disabled">
+          <rect
+            class="invslot"
+            x="85" y="10" width="50" height="50"
+            fill="#505080" stroke-width="5"
+          />
+          <image
+            href="assets/tiles/bomb_small.png"
+            x="85" y="10" width="50" height="50"
+          />
+          <rect
+            x="120" y="45" width="25" height="20"
+            fill="#505080" stroke="white" stroke-width="2"
+          />
+          <text x="123" y="60.5" fill="white" />
+        </g>
+        <g class="disabled">
+          <rect
+            class="invslot"
+            x="155" y="10" width="50" height="50"
+            fill="#505080" stroke-width="5"
+          />
+          <image
+            href="assets/tiles/bomb_medium.png"
+            x="155" y="10" width="50" height="50"
+          />
+          <rect
+            x="190" y="45" width="25" height="20"
+            fill="#505080" stroke="white" stroke-width="2"
+          />
+          <text x="193" y="60.5" fill="white" />
+        </g>
+        <g class="disabled">
+          <rect
+            class="invslot"
+            x="225" y="10" width="50" height="50"
+            fill="#505080" stroke-width="5"
+          />
+          <image
+            href="assets/tiles/bomb_large.png"
+            x="225" y="10" width="50" height="50"
+          />
+          <rect
+            x="260" y="45" width="25" height="20"
+            fill="#505080" stroke="white" stroke-width="2"
+          />
+          <text x="263" y="60.5" fill="white" />
+        </g>
+      </svg>
+      <svg id="end" class="disabled">
+        <rect class="shadow" width="100%" height="100%" fill="url(#sunset)" />
+        <image
+          href="assets/intro/sun.png"
+          x="50" y="160" width="50" height="50"
+        />
+        <image
+          href="assets/end/doki.png"
+          x="200" y="185" width="100" height="100"
+        />
+        <image
+          href="assets/end/dad.png"
+          x="265" y="220" width="35" height="35"
+        />
+        <g id="end-terrain" class="shadow" />
+        <g id="end-overlay" class="disabled" fill="white">
+          <rect width="100%" height="100%" fill="#404040" fill-opacity="0.75" />
+          <text
+            id="end-title" class="disabled"
+            text-anchor="middle"
+            x="50%" y="50"
+          >Escaped!</text>
+          <g class="end-line disabled">
+            <text x="28%" y="90" dy="0" text-anchor="start">Time:</text>
+            <text x="72%" y="90" dy="0" text-anchor="end" id="end-time"/>
+          </g>
+          <g class="end-line disabled">
+            <text x="28%" y="90" dy="25" text-anchor="start">Shots fired:</text>
+            <text x="72%" y="90" dy="25" text-anchor="end" id="end-shots"/>
+          </g>
+          <g class="end-line disabled">
+            <text x="28%" y="90" dy="50" text-anchor="start">Bombs detonated:</text>
+            <text x="72%" y="90" dy="50" text-anchor="end" id="end-bombs"/>
+          </g>
+          <g class="end-line disabled">
+            <text x="28%" y="90" dy="75" text-anchor="start">Bombs chained:</text>
+            <text x="72%" y="90" dy="75" text-anchor="end" id="end-chain"/>
+          </g>
+          <g class="end-line disabled">
+            <text x="28%" y="90" dy="100" text-anchor="start">Restarts:</text>
+            <text x="72%" y="90" dy="100" text-anchor="end" id="end-restarts"/>
+          </g>
+          <text
+            id="end-debug" class="disabled"
+            text-anchor="middle"
+            fill="darkgray"
+            x="50%" y="215"
+          >Debug tools used</text>
+          <text
+            id="end-thanks" class="disabled"
+            text-anchor="middle"
+            x="50%" y="255"
+          >Thanks for playing!</text>
+        </g>
+        <defs>
+          <linearGradient id="sunset" x1="0" x2="0" y1="0" y2="1">
+            <stop offset="0" stop-color="#153254" />
+            <stop offset="0.4" stop-color="#346f91" />
+            <stop offset="0.6" stop-color="#b0b0a0" />
+            <stop offset="0.7" stop-color="#c5b090" />
+            <stop offset="0.8" stop-color="#ffb080" />
+            <stop offset="0.85" stop-color="#ff8040" />
+          </linearGradient>
+        </defs>
+      </svg>
+    </main>
+    <script type="module" src="index.js"></script>
+    <!-- #region preload audio -->
+    <audio preload src="assets/audio/place.ogg"></audio>
+    <audio preload src="assets/audio/pickup.ogg"></audio>
+    <audio preload src="assets/audio/pebble.ogg"></audio>
+    <audio preload src="assets/audio/explode1.ogg"></audio>
+    <audio preload src="assets/audio/explode2.ogg"></audio>
+    <audio preload src="assets/audio/explode3.ogg"></audio>
+    <audio preload src="assets/audio/explode4.ogg"></audio>
+    <audio preload src="assets/audio/chest.ogg"></audio>
+    <audio preload src="assets/audio/trapdoor1.ogg"></audio>
+    <audio preload src="assets/audio/trapdoor2.ogg"></audio>
+    <audio preload src="assets/audio/trapdoor3.ogg"></audio>
+    <audio preload src="assets/audio/trapdoor4.ogg"></audio>
+    <audio preload src="assets/audio/minecart.ogg"></audio>
+    <audio preload src="assets/audio/ding.ogg"></audio>
+    <audio preload src="assets/audio/trip.ogg"></audio>
+    <audio preload src="assets/audio/step1.ogg"></audio>
+    <audio preload src="assets/audio/step2.ogg"></audio>
+    <audio preload src="assets/audio/step3.ogg"></audio>
+    <audio preload src="assets/audio/step4.ogg"></audio>
+    <audio preload src="assets/audio/step5.ogg"></audio>
+    <audio preload src="assets/audio/step6.ogg"></audio>
+    <audio preload src="assets/audio/intro_step1.ogg"></audio>
+    <audio preload src="assets/audio/intro_step2.ogg"></audio>
+    <audio preload src="assets/audio/intro_step3.ogg"></audio>
+    <audio preload src="assets/audio/intro_step4.ogg"></audio>
+    <audio preload src="assets/audio/intro_step5.ogg"></audio>
+    <audio preload src="assets/audio/intro_step6.ogg"></audio>
+    <!-- #endregion -->
+  </body>
+</html>

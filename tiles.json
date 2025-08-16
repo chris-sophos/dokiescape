@@ -1,0 +1,21 @@
+[
+  "empty.png",
+  "stone.png",
+  "weakstone.png",
+  "deepstone.png",
+  "weakdeepstone.png",
+  "trapdoor.png",
+  "chest.png",
+  "chest_disabled.png",
+  "dirt.png",
+  "grass.png",
+  "rail-h.png",
+  "rail-v.png",
+  "rail_corner-lu.png",
+  "rail_corner-ru.png",
+  "rail_corner-ld.png",
+  "rail_corner-rd.png",
+  "bomb_small.png",
+  "bomb_medium.png",
+  "bomb_large.png"
+]

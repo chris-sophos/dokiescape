@@ -1,0 +1,70 @@
+body {
+  background-color: #303040;
+  color: white;
+  font: large monospace;
+  text-align: center;
+  user-select: none;
+}
+
+#root, #intro {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.disabled {
+  display: none !important;
+}
+
+image {
+  image-rendering: pixelated;
+}
+
+.tile {
+  filter: drop-shadow(5px 5px 2px rgb(0, 0, 0));
+  &.interactable {
+    filter: drop-shadow(4px 4px 2px rgb(0, 0, 0, 50%));
+  }
+}
+
+#highlight {
+  outline: 2px solid black;
+  outline-offset: -2px;
+  &:not(.disallowed) {
+    &.inrange {
+      outline-color: white;
+      &.interactable {
+        outline-color: lightgreen;
+      }
+    }
+  }
+}
+
+.invslot {
+  stroke: darkgray;
+  &.selected {
+    stroke: white;
+  }
+}
+
+#end text {
+  filter: drop-shadow(4px 4px 2px rgb(0, 0, 0));
+}
+
+#end-title {
+  font-size: 20pt;
+}
+
+#end-thanks {
+  font-size: 14pt;
+}
+
+#end-debug {
+  font-size: 10pt;
+}
+
+.shadow {
+  filter: brightness(0.6);
+}
