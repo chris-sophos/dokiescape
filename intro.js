@@ -23,8 +23,7 @@ const dadRotationMax = 180;
 let dad = null;
 let dadPos = [0, 0];
 
-container.setAttribute("width", gridSize[0] * cellSize);
-container.setAttribute("height", gridSize[1] * cellSize);
+container.setAttribute("viewBox", `0 0 ${gridSize[0] * cellSize} ${gridSize[1] * cellSize}`);
 intro.classList.remove("disabled");
 const grid = Array.from(
   { length: gridSize[1] },

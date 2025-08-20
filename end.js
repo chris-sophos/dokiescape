@@ -18,8 +18,7 @@ const endRestarts = document.getElementById("end-restarts");
 const lines = document.querySelectorAll(".end-line")
 let currentLine = -1;
 
-endContainer.setAttribute("width", gridSize[0] * cellSize);
-endContainer.setAttribute("height", gridSize[1] * cellSize);
+endContainer.setAttribute("viewBox", `0 0 ${gridSize[0] * cellSize} ${gridSize[1] * cellSize}`);
 for (let j = 0; j < gridSize[0]; j++) {
   const tile = document.createElementNS("http://www.w3.org/2000/svg", "image");
   tile.setAttribute("x", j * cellSize);

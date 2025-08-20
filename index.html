@@ -69,7 +69,7 @@
     <main id="root">
       <h1>DokiEscape!</h1>
       <div id="intro" class="disabled">
-        <svg id="intro-grid">
+        <svg id="intro-grid" class="grid-container">
           <rect width="100%" height="50%" fill="deepskyblue" />
           <rect width="100%" height="50%" y="50%" fill="dimgrey" />
           <image
@@ -101,7 +101,7 @@
         </svg>
         <button id="start">Start</button>
       </div>
-      <svg id="game" class="disabled" fill="transparent">
+      <svg id="game" class="grid-container disabled" fill="transparent">
         <rect width="100%" height="100%" fill="dimgray" />
         <g id="rail" />
         <g id="terrain" />
@@ -200,7 +200,7 @@
           <text x="263" y="60.5" fill="white" />
         </g>
       </svg>
-      <svg id="end" class="disabled">
+      <svg id="end" class="grid-container disabled">
         <rect class="shadow" width="100%" height="100%" fill="url(#sunset)" />
         <image
           href="assets/intro/sun.png"

@@ -21,8 +21,7 @@ export let bombsShot = 0;
 export let restarts = 0;
 export let debugToolsUsed = false;
 
-container.setAttribute("width", gridSize[0] * cellSize);
-container.setAttribute("height", gridSize[1] * cellSize);
+container.setAttribute("viewBox", `0 0 ${gridSize[0] * cellSize} ${gridSize[1] * cellSize}`);
 const terrain = Array.from(
   { length: gridSize[1] },
   (_, i) => Array.from(
