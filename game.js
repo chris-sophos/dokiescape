@@ -145,8 +145,8 @@ let canContinue = false;
 let currentLevel = 0;
 const input = new Set();
 
-document.addEventListener("keydown", (evt) => input.add(evt.code));
-document.addEventListener("keyup", (evt) => input.delete(evt.code));
+document.addEventListener("keydown", (evt) => evt.repeat || input.add(evt.code));
+document.addEventListener("keyup", (evt) => evt.repeat || input.delete(evt.code));
 container.addEventListener("click", handleClick);
 container.addEventListener("contextmenu", handleClick);
 
@@ -166,6 +166,22 @@ export function update(deltaTime) {
     if (input.has("BracketRight")) {
       debugToolsUsed = true;
       nextLevel();
+    }
+    if (inventory) {
+      if (input.has("Digit1")) {
+        selected = 0;
+        updateInventory();
+        input.delete("Digit1");
+      } else {
+        for (let i = 1; i <= 3; i++) {
+          if (inventory[i - 1] != null && input.has(`Digit${i + 1}`)) {
+            selected = i;
+            updateInventory();
+            input.delete(`Digit${i + 1}`);
+            break;
+          }
+        }
+      }
     }
     playerMotion(deltaTime);
     stepPebbles(deltaTime);

@@ -30,6 +30,7 @@ See the "**Stuck?**" section above if you can't figure something out!
 - R to restart level.
 - Left click to interact, select items, and use items.
 - Right click to pick up bombs.
+- NumRow 1-4 to select inventory items.
 - (Debug) `[`/`]` to load previous/next level.
 
 ## Acknowledgements
