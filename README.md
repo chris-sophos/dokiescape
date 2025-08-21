@@ -53,3 +53,7 @@ Assets used:
   - [Line intersection detection](https://stackoverflow.com/a/24392281) by Dan Fox via StackOverflow
 
 Thanks to kano for hosting the jam and its community!
+
+## License
+
+[MIT](./LICENSE)
