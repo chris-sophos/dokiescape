@@ -2,6 +2,8 @@
 
 How did you manage to fall in the 1x1 hole? No matter - find a way out!
 
+[Play on itch!](https://chris-sophos.itch.io/dokiescape)
+
 <details>
   <summary>Stuck?</summary>
   A green highlight means the tile is interactable. (click to interact)
